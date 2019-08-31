@@ -7,11 +7,11 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/profiles',
+    redirectTo: '/home',
     pathMatch: 'full'
   },
   {
-    path:  'profiles',
+    path:  'home',
     component:  ProfileListComponent
   },
   {

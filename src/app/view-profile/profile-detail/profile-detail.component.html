@@ -1,0 +1,93 @@
+<mat-card>
+  <mat-card class="lightbg">
+    <mat-card-header>
+      <mat-card-title>Profile Detail</mat-card-title>
+    </mat-card-header>
+    <mat-card class="no-border no-padding">
+      <mat-card-content>
+        <mat-list role="list" class="detail_list">
+            <!--Prefix-->
+            <mat-list-item role="listitem">
+              <div class="col30">Prefix</div>
+              <div class="col60">{{theProfile?.prefix}}</div>
+              <div class="col10 text-right">
+                <mat-icon>edit</mat-icon>
+              </div>
+            </mat-list-item>
+
+            <!--First Name-->
+            <mat-list-item role="listitem">
+              <div class="col30">First Name</div>
+              <div class="col60">{{theProfile?.firstName}}</div>
+              <div class="col10 text-right">
+                <mat-icon>edit</mat-icon>
+              </div>
+            </mat-list-item>
+
+            <!--Last Name-->
+            <mat-list-item role="listitem">
+              <div class="col30">Last Name</div>
+              <div class="col60">{{theProfile?.lastName}}</div>
+              <div class="col10 text-right">
+                <mat-icon>edit</mat-icon>
+              </div>
+            </mat-list-item>
+
+            <!--Suffix-->
+            <mat-list-item role="listitem">
+              <div class="col30">Suffix</div>
+              <div class="col60">{{theProfile?.suffix}}</div>
+              <div class="col10 text-right">
+                <mat-icon>edit</mat-icon>
+              </div>
+            </mat-list-item>
+
+            <!--Loyalty Member Id-->
+            <mat-list-item role="listitem">
+              <div class="col30">Loyalty Member Id</div>
+              <div class="col60">{{theProfile?.localId}}</div>
+              <div class="col10 text-right">
+                <mat-icon>edit</mat-icon>
+              </div>
+            </mat-list-item>
+
+            <!--Phone-->
+            <mat-list-item role="listitem">
+              <div class="col30">Phone</div>
+              <div class="col60">{{theProfile?.phoneNumber}}</div>
+              <div class="col10 text-right">
+                <mat-icon>edit</mat-icon>
+              </div>
+            </mat-list-item>
+
+            <!--Address-->
+            <mat-list-item role="listitem">
+              <div class="col30">Address</div>
+              <div class="col60">{{theProfile?.address}}</div>
+              <div class="col10 text-right">
+                <mat-icon>edit</mat-icon>
+              </div>
+            </mat-list-item>
+
+            <!--BirthDate-->
+            <mat-list-item role="listitem">
+              <div class="col30">BirthDate</div>
+              <div class="col60">{{theProfile?.birthDate | date}}</div>
+              <div class="col10 text-right">
+                <mat-icon>edit</mat-icon>
+              </div>
+            </mat-list-item>
+
+            <!--Language Preference-->
+            <mat-list-item role="listitem">
+              <div class="col30">Language Preference</div>
+              <div class="col60">{{theProfile?.languagePreference}}</div>
+              <div class="col10 text-right">
+                <mat-icon>edit</mat-icon>
+              </div>
+            </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </mat-card>
+</mat-card>

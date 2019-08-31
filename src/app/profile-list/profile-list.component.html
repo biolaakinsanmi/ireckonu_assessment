@@ -1,3 +1,95 @@
-<p>
-  profile-list works!
-</p>
+<mat-toolbar class="bgcolor1 header_toolbar">
+  <span class="mat-display-1">Profiles</span>
+</mat-toolbar>
+
+<section id="profiles_list" class="content_div">
+
+  <mat-toolbar class="bgcolor1 search_toolbar">
+    <mat-form-field appearance="fill" class="searchbox">
+      <!--<mat-label>Legacy form field</mat-label>-->
+      <input matInput class="searchbox_input" type="text" id="profileSearchQuery" [formControl]="searchQuery" placeholder="Filter profile" [disabled] />
+      <mat-icon matPrefix>search</mat-icon>
+    </mat-form-field>
+    <button mat-raised-button color="primary" [disabled]="searchQuery.value === ''">
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <div class="container">
+    <!--NO FETCHED RESULT WARNING-->
+    <div class="alerts danger" *ngIf="noFetchedResult">
+        Sorry! No profile fetched.
+    </div>
+
+    <!--NO FILTER RESULT WARNING-->
+    <div class="alerts warning" *ngIf="noFilterResultWarning">
+      No profile with this filter found.
+      <a href="javascript: void(0);" (click)="searchQuery.setValue('')">Clear filter</a>
+    </div>
+
+    <ng-container *ngIf="!(noFetchedResult || noFilterResultWarning)">
+      <table mat-table matSort [dataSource]="dataSource" (matSortChange)="sortData($event)" class="profile_list_table">
+
+        <!-- avatar Column -->
+        <ng-container matColumnDef="avatar">
+          <th mat-header-cell *matHeaderCellDef> No. </th>
+          <td mat-cell *matCellDef="let element">
+            <span class="img_thumb">
+              <img src="{{element.avatar}}" alt="{{element.localId }}">
+            </span>
+          </td>
+        </ng-container>
+
+        <!-- localId Column -->
+        <ng-container matColumnDef="localId">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-center"> Local Id </th>
+          <td mat-cell *matCellDef="let element" class="text-center"> {{element.localId }} </td>
+        </ng-container>
+
+        <!-- lastName Column -->
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Email Address </th>
+          <td mat-cell *matCellDef="let element"> {{element.emailAddress}} </td>
+        </ng-container>
+
+        <!-- firstName Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> First Name </th>
+          <td mat-cell *matCellDef="let element"> {{element?.prefix + (element.prefix? '.': '') + ' ' + element?.firstName + ' ' +  element?.lastName + ' ' + element?.suffix }} </td>
+        </ng-container>
+
+        <!-- Phone Number Column -->
+        <ng-container matColumnDef="phoneNumber">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone Number </th>
+          <td mat-cell *matCellDef="let element"> {{element.phoneNumber}} </td>
+        </ng-container>
+
+        <!-- addresss Column -->
+        <ng-container matColumnDef="address">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Address </th>
+          <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+        </ng-container>
+
+        <!-- Modified Column -->
+        <ng-container matColumnDef="modified">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Modified </th>
+          <td mat-cell *matCellDef="let element"> {{element.birthDate}} </td>
+        </ng-container>
+
+        <!-- Modified Column -->
+        <ng-container matColumnDef="view">
+          <th mat-header-cell *matHeaderCellDef class="text-right"> View </th>
+          <td mat-cell *matCellDef="let element" class="text-right">
+            <mat-icon>chevron_right</mat-icon>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="viewProfile(row)"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[25, 50]"  [length]="allProfiles.length"  [pageSize]="pageSize" (page)="pageEvent($event)" showFirstLastButtons></mat-paginator>
+    </ng-container>
+  </div>
+
+</section>

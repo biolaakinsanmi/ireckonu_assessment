@@ -1,1 +1,16 @@
 <router-outlet></router-outlet>
+
+<!--LOADER WHILE FECTING PROFILES-->
+<div class="loading animated fadeIn" *ngIf="doneFetching === null">
+  Fetching Profiles...
+  <div class="bg"></div>
+</div>
+
+<!--NOTICE WHEN FECTING PROFILE FAILS-->
+<div class="note_box sticktotop" *ngIf="doneFetching === false">
+    <h3>Sorry!</h3>
+    <p>
+      Fetch profiles failed. <br />Please check your internet connection or try reloading the page.
+      If issue still persist, contact administrator.
+    </p>
+</div>

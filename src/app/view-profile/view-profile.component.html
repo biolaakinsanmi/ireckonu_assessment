@@ -1,3 +1,49 @@
-<p>
-  view-profile works!
-</p>
+<mat-toolbar class="bgcolor1 header_toolbar">
+  <span class="mat-display-1">
+    Profile:
+    <span class="img_thumb">
+      <img src="{{theProfile?.avatar}}" alt="{{theProfile?.firstName}} {{theProfile?.lastName}}">
+      <span class="icon_float">
+        in
+      </span>
+    </span>
+    {{theProfile?.firstName}} {{theProfile?.lastName}}
+  </span>
+</mat-toolbar>
+
+<section id="single_profile" class="content_div">
+  <mat-toolbar class="bgcolor1 backdrop_toolbar">
+    &nbsp;
+  </mat-toolbar>
+
+  <div class="container float_top">
+    <div class="profile_display_row">
+      <!--left column-->
+      <div class="leftcol">
+        <div app-quick-facts class="d-flex"></div>
+      </div>
+
+      <!--right column-->
+      <div class="rightcol">
+        <mat-tab-group>
+          <!--Profile Detail-->
+          <mat-tab label="Profile Detail">
+            <div app-profile-detail [theProfile]="theProfile" class="d-flex"></div>
+          </mat-tab>
+
+          <!--Profile Ids-->
+          <mat-tab label="Profile IDs">
+            <div app-profile-ids [theProfile]="theProfile" class="d-flex"></div>
+          </mat-tab>
+
+          <!--Activity Timeline-->
+          <mat-tab label="Activity Timeline">
+            <div app-profile-ids [theProfile]="theProfile" class="d-flex"></div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+
+  </div>
+
+</section>
