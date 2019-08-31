@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  fireApiBaseUrl: 'https://ireckonuapi.firebaseio.com/.json'
+  //fireApiBaseUrl: 'https://profiles-list.firebaseio.com/Data.json' //this was provided by ireckonyou, but was not working as at when i tried it
 };
 
 /*
